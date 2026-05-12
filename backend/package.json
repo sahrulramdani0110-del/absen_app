@@ -1,0 +1,21 @@
+{
+  "name": "absensi-backend",
+  "version": "1.0.0",
+  "description": "Backend API Sistem Absensi Digital",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
