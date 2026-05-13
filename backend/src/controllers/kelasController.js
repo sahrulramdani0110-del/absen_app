@@ -68,6 +68,7 @@ exports.tambahAnggota = async (req, res) => {
     );
     res.status(201).json({ message: 'Anggota berhasil ditambahkan.' });
   } catch (err) {
+    console.error('ERROR TAMBAH ANGGOTA:', err);  // ← TAMBAH INI
     if (err.code === 'ER_DUP_ENTRY') {
       return res.status(400).json({ message: 'User sudah menjadi anggota kelas ini.' });
     }

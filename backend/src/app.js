@@ -2,12 +2,20 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 
+const cors = require('cors');
+app.use(cors({
+  origin: ['http://localhost:3001', 'http://localhost:3000'],
+  credentials: true,
+}));
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.json({ message: 'API Absensi Digital berjalan.' });
 });
+
 
 app.use('/api/auth',        require('./routes/auth'));
 app.use('/api/organisasi',  require('./routes/organisasi'));

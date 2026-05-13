@@ -21,8 +21,8 @@ exports.bukaSesi = async (req, res) => {
 
   try {
     const [result] = await pool.query(
-      `INSERT INTO sessions (kelas_id, created_by, title, start_time, latitude, longitude, radius_meters)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO sessions (kelas_id, created_by, title, start_time, end_time, latitude, longitude, radius_meters)
+       VALUES (?, ?, ?, ?, NULL, ?, ?, ?)`,
       [kelas_id, req.user.id, title, start_time, latitude || null, longitude || null, radius_meters || 100]
     );
     res.status(201).json({
@@ -30,6 +30,7 @@ exports.bukaSesi = async (req, res) => {
       sessionId: result.insertId,
     });
   } catch (err) {
+    console.error('ERROR BUKA SESI:', err);
     res.status(500).json({ message: 'Server error.', error: err.message });
   }
 };
@@ -118,6 +119,7 @@ exports.checkIn = async (req, res) => {
     if (err.code === 'ER_DUP_ENTRY') {
       return res.status(400).json({ message: 'Kamu sudah melakukan absensi di sesi ini.' });
     }
+    console.error('ERROR BUKA SESI:', err);
     res.status(500).json({ message: 'Server error.', error: err.message });
   }
 };
@@ -170,6 +172,8 @@ exports.riwayatUser = async (req, res) => {
     );
     res.json({ total: rows.length, data: rows });
   } catch (err) {
+    console.error('ERROR BUKA SESI:', err);
+
     res.status(500).json({ message: 'Server error.', error: err.message });
   }
 };
