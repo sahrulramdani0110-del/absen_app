@@ -32,16 +32,26 @@ class DashboardScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Obx(() => Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Halo, ${auth.user.value?.name.split(' ').first ?? ''} 👋',
-                              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: AppColors.ink),
-                            ),
-                            const Text('Ringkasan kehadiran kamu', style: TextStyle(color: AppColors.inkMuted, fontSize: 13)),
-                          ],
-                        )),
+                    Expanded(
+                      child: Obx(() => Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Halo, ${auth.user.value?.name.split(' ').first ?? ''} 👋',
+                                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: AppColors.ink),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              const Text(
+                                'Ringkasan kehadiran kamu',
+                                style: TextStyle(color: AppColors.inkMuted, fontSize: 13),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          )),
+                    ),
+                    const SizedBox(width: 12),
                     // Logout button
                     IconButton(
                       onPressed: () => _showLogoutDialog(auth),
@@ -58,7 +68,7 @@ class DashboardScreen extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       crossAxisSpacing: 12,
                       mainAxisSpacing: 12,
-                      childAspectRatio: 1.6,
+                      childAspectRatio: 1.4,
                       children: [
                         _StatCard(
                           label: 'Total Absensi',
@@ -221,8 +231,18 @@ class _StatCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(value, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: AppColors.ink)),
-              Text(label, style: const TextStyle(fontSize: 11, color: AppColors.inkMuted)),
+              Text(
+                value,
+                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: AppColors.ink),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              Text(
+                label,
+                style: const TextStyle(fontSize: 11, color: AppColors.inkMuted),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
             ],
           ),
         ],
