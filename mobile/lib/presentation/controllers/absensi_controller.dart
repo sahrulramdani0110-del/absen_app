@@ -169,6 +169,29 @@ class AbsensiController extends GetxController {
     }
   }
 
+  Future<void> bukaSesi({
+    required int kelasId,
+    required String title,
+    required String startTime,
+    double? latitude,
+    double? longitude,
+    int radiusMeters = 100,
+  }) async {
+    try {
+      await _absensiRepo.bukaSesi(
+        kelasId: kelasId,
+        title: title,
+        startTime: startTime,
+        latitude: latitude,
+        longitude: longitude,
+        radiusMeters: radiusMeters,
+      );
+      fetchSesi();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   List<SessionModel> get sesiAktif => sesiList.where((s) => s.isOpen).toList();
   List<SessionModel> get sesiTutup => sesiList.where((s) => !s.isOpen).toList();
 

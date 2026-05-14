@@ -125,7 +125,7 @@ class AbsensiScreen extends StatelessWidget {
                 }
                 Get.back();
                 try {
-                  await ctrl._absensiRepo.bukaSesi(
+                  await ctrl.bukaSesi(
                     kelasId: int.parse(selectedKelasId!),
                     title: titleCtrl.text,
                     startTime: DateTime.now().toIso8601String(),
@@ -134,7 +134,6 @@ class AbsensiScreen extends StatelessWidget {
                     radiusMeters: int.tryParse(radiusCtrl.text) ?? 100,
                   );
                   Get.snackbar('Berhasil', 'Sesi absensi dibuka!', snackPosition: SnackPosition.BOTTOM);
-                  ctrl.fetchSesi();
                 } catch (e) {
                   Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
                 }

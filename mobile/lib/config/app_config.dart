@@ -1,7 +1,7 @@
 class AppConfig {
   // Ganti dengan IP lokal kamu saat development
   // cth: 'http://192.168.1.100:3000'
-  static const String baseUrl = 'http://10.0.2.2:3000'; // 10.0.2.2 = localhost di Android emulator
+  static const String baseUrl = 'http://192.168.1.209:3000'; // 10.0.2.2 = localhost di Android emulator
 
   static const String appName = 'AbsensiKu';
   static const String appVersion = '1.0.0';
