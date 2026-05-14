@@ -39,6 +39,7 @@ class AppPages {
         Get.put(AbsensiRepository());
         Get.put(KelasRepository());
         Get.put(AbsensiController());
+        Get.put(KelasController());
       }),
     ),
     GetPage(

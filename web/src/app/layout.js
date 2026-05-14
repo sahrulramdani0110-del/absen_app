@@ -15,6 +15,14 @@ const jetbrains = JetBrains_Mono({
 export const metadata = {
   title: "AbsensiKu — Sistem Absensi Digital",
   description: "Sistem absensi digital untuk sekolah dan organisasi",
+  manifest: "/manifest.json",
+  themeColor: "#ff8906",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "AbsensiKu",
+  },
 };
 
 export default function RootLayout({ children }) {
